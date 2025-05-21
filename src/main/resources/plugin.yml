@@ -1,0 +1,9 @@
+name: getCustomItem
+version: '${project.version}'
+main: dev.gether.getcustomitem.GetCustomItem
+api-version: '1.16'
+depend:
+  - WorldGuard
+softdepend: [getPlayerDrop, DeluxeCombat, CombatLogX, PvPManager, EssentialsX, enchantingItem, getTempBlock]
+libraries:
+  - com.zaxxer:HikariCP:5.1.0
