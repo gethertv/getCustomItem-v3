@@ -52,7 +52,6 @@ public class GlobalConsumeListener implements Listener {
             return;
         }
 
-
         EquipmentSlot usedSlot = EquipmentSlot.HAND;
         ItemStack offHandItem = player.getInventory().getItemInOffHand();
 
@@ -60,11 +59,13 @@ public class GlobalConsumeListener implements Listener {
             usedSlot = EquipmentSlot.OFF_HAND;
         }
 
-
         CustomItemConsumeEvent customItemConsumeEvent = new CustomItemConsumeEvent(player, customItem, consumedItem, usedSlot);
         Bukkit.getPluginManager().callEvent(customItemConsumeEvent);
 
-//        event.setCancelled(customItemConsumeEvent.isCancelEvent());
+        player.getInventory().setItem(usedSlot, customItemConsumeEvent.getItemStack());
+
+
+        event.setCancelled(customItemConsumeEvent.isCancelEvent());
 
         DebugMode.debug(customItem);
 
@@ -72,7 +73,6 @@ public class GlobalConsumeListener implements Listener {
             event.setCancelled(true);
             return;
         }
-        event.setItem(consumedItem);
 
     }
 }
